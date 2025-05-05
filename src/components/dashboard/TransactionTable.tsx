@@ -1,6 +1,15 @@
 
 import React from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { 
+  Table, 
+  TableHeader, 
+  TableBody, 
+  TableHead,
+  TableRow, 
+  TableCell 
+} from "@/components/ui/table";
+import { ArrowRight } from "lucide-react";
 
 interface Transaction {
   icon: string;
@@ -52,7 +61,7 @@ const transactions: Transaction[] = [
     icon: 'https://cdn.builder.io/api/v1/image/assets/5fef96f6a1464afbb033bd371ba8593b/b8e25fc612de9304f0e87abf551eba6f4a915254?placeholderIfAbsent=true',
     name: 'Ognjen Samardzic',
     avatarText: 'OS',
-    type: '',
+    type: 'Outgoing',
     status: 'completed',
     amount: '-USD 250.00'
   }
@@ -60,16 +69,14 @@ const transactions: Transaction[] = [
 
 const StatusBadge: React.FC<{ status: Transaction['status'] }> = ({ status }) => {
   const styles = {
-    completed: 'bg-[#9AEBBF]',
-    pending: 'bg-[#FFE6BF]',
-    'in progress': 'bg-[#FFE6BF]'
+    completed: 'bg-[#9AEBBF] text-[#363636]',
+    pending: 'bg-[#FFE6BF] text-[#363636]',
+    'in progress': 'bg-[#FFE6BF] text-[#363636]'
   };
 
   return (
-    <div className={`items-stretch rounded flex flex-col justify-center ${styles[status]} px-2 py-1`}>
-      <div className="text-[#363636] self-stretch gap-1">
-        {status.charAt(0).toUpperCase() + status.slice(1)}
-      </div>
+    <div className={`inline-flex items-center justify-center rounded px-2 py-1 text-xs font-medium ${styles[status]}`}>
+      {status.charAt(0).toUpperCase() + status.slice(1)}
     </div>
   );
 };
@@ -90,22 +97,21 @@ export const TransactionTable: React.FC = () => {
         <div className="text-black text-base font-semibold max-md:max-w-full">
           Today
         </div>
-        <div className="w-full overflow-hidden mt-2 max-md:max-w-full">
-          {transactions.map((transaction, index) => (
-            <div key={index} className="flex min-h-20 w-full items-center overflow-hidden flex-wrap rounded-lg max-md:max-w-full">
-              <div className="justify-center items-stretch border-b-[color:var(--Neutral-400,#EBEBEB)] bg-white self-stretch flex flex-col w-[118px] my-auto border-b border-solid">
-                <div className="flex w-full flex-col items-stretch justify-center pl-5 pr-8 py-4 max-md:pr-5">
-                  <div className="flex w-full items-center gap-2.5">
-                    <div className="items-center border border-[color:var(--Neutral-400,#EBEBEB)] self-stretch flex w-12 gap-2.5 h-12 bg-neutral-50 my-auto p-3 rounded-[100px] border-solid">
-                      <img src={transaction.icon} alt="" className="aspect-[1] object-contain w-6 self-stretch my-auto" />
+        
+        <Table className="w-full mt-2">
+          <TableBody>
+            {transactions.map((transaction, index) => (
+              <TableRow key={index} className="hover:bg-gray-50">
+                <TableCell className="w-[118px] p-0">
+                  <div className="flex w-full items-center justify-start p-4">
+                    <div className="items-center border border-[color:var(--Neutral-400,#EBEBEB)] flex w-12 h-12 bg-neutral-50 p-3 rounded-full border-solid">
+                      <img src={transaction.icon} alt="" className="w-6 h-6 object-contain" />
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="justify-center items-stretch border-b-[color:var(--Neutral-400,#EBEBEB)] bg-white self-stretch flex min-w-60 min-h-20 flex-col flex-1 shrink basis-[0%] my-auto border-b border-solid max-md:max-w-full">
-                <div className="flex w-full flex-col items-stretch justify-center flex-1 pl-5 pr-8 py-4 max-md:max-w-full max-md:pr-5">
-                  <div className="flex w-full gap-3 flex-wrap max-md:max-w-full">
+                </TableCell>
+                
+                <TableCell className="min-w-[240px]">
+                  <div className="flex items-center gap-3">
                     <Avatar className="h-12 w-12 shrink-0">
                       {transaction.avatar ? (
                         <AvatarImage src={transaction.avatar} alt={transaction.name} />
@@ -114,38 +120,33 @@ export const TransactionTable: React.FC = () => {
                         {transaction.avatarText}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="min-w-60 flex-1 shrink basis-6 max-md:max-w-full">
-                      <div className="text-[#363636] text-xl font-medium leading-[1.4] max-md:max-w-full">
+                    <div>
+                      <div className="text-[#363636] text-xl font-medium leading-[1.4]">
                         {transaction.name}
                       </div>
                       {transaction.type && (
-                        <div className="text-[#5E5E5E] text-sm font-normal leading-none max-md:max-w-full">
+                        <div className="text-[#5E5E5E] text-sm font-normal leading-none flex items-center gap-1">
                           {transaction.type}
+                          {transaction.type.includes('Outgoing') && (
+                            <ArrowRight className="h-3 w-3 text-[#5E5E5E]" />
+                          )}
                         </div>
                       )}
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="justify-center items-stretch border-b-[color:var(--Neutral-400,#EBEBEB)] bg-white self-stretch flex min-h-20 flex-col text-xs text-[#363636] font-normal text-center leading-none w-[120px] my-auto border-b border-solid">
-                <div className="flex w-full flex-col items-stretch justify-center pl-5 pr-8 py-4 max-md:pr-5">
-                  <div className="w-full">
-                    <StatusBadge status={transaction.status} />
-                  </div>
-                </div>
-              </div>
-
-              <div className={`justify-center items-stretch border-b-[color:var(--Neutral-400,#EBEBEB)] bg-white self-stretch flex min-h-20 flex-col text-xl font-medium text-right leading-[1.4] w-60 my-auto border-b border-solid ${transaction.isPositive ? 'text-[#3CB775]' : 'text-[#363636]'}`}>
-                <div className="flex w-full flex-col items-stretch justify-center flex-1 pl-5 pr-8 py-4 max-md:pr-5">
-                  <div className="w-full">
-                    {transaction.amount}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                </TableCell>
+                
+                <TableCell className="w-[120px]">
+                  <StatusBadge status={transaction.status} />
+                </TableCell>
+                
+                <TableCell className={`w-[160px] text-right text-xl font-medium ${transaction.isPositive ? 'text-[#3CB775]' : 'text-[#363636]'}`}>
+                  {transaction.amount}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
     </section>
   );
