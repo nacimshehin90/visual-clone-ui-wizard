@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface Transaction {
   icon: string;
@@ -49,7 +51,7 @@ const transactions: Transaction[] = [
   {
     icon: 'https://cdn.builder.io/api/v1/image/assets/5fef96f6a1464afbb033bd371ba8593b/b8e25fc612de9304f0e87abf551eba6f4a915254?placeholderIfAbsent=true',
     name: 'Ognjen Samardzic',
-    avatarText: 'RK',
+    avatarText: 'OS',
     type: '',
     status: 'completed',
     amount: '-USD 250.00'
@@ -104,13 +106,14 @@ export const TransactionTable: React.FC = () => {
               <div className="justify-center items-stretch border-b-[color:var(--Neutral-400,#EBEBEB)] bg-white self-stretch flex min-w-60 min-h-20 flex-col flex-1 shrink basis-[0%] my-auto border-b border-solid max-md:max-w-full">
                 <div className="flex w-full flex-col items-stretch justify-center flex-1 pl-5 pr-8 py-4 max-md:max-w-full max-md:pr-5">
                   <div className="flex w-full gap-3 flex-wrap max-md:max-w-full">
-                    {transaction.avatar ? (
-                      <img src={transaction.avatar} alt="" className="aspect-[1] object-contain w-12 shrink-0 gap-2.5 py-3 rounded-[100px]" />
-                    ) : (
-                      <div className="text-neutral-50 self-stretch min-h-12 gap-2.5 text-base font-medium whitespace-nowrap text-center w-12 h-12 px-3 rounded-[100px]">
+                    <Avatar className="h-12 w-12 shrink-0">
+                      {transaction.avatar ? (
+                        <AvatarImage src={transaction.avatar} alt={transaction.name} />
+                      ) : null}
+                      <AvatarFallback className="bg-[#363636] text-white">
                         {transaction.avatarText}
-                      </div>
-                    )}
+                      </AvatarFallback>
+                    </Avatar>
                     <div className="min-w-60 flex-1 shrink basis-6 max-md:max-w-full">
                       <div className="text-[#363636] text-xl font-medium leading-[1.4] max-md:max-w-full">
                         {transaction.name}
