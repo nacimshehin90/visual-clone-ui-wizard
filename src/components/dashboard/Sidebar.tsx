@@ -18,7 +18,7 @@ export const Sidebar: React.FC = () => {
         <img
           src="/lovable-uploads/9abb0c22-a7f0-4db1-a6c7-291d6f0bd45d.png"
           alt="MW Logo"
-          className="aspect-square object-contain w-[58px] fill-[linear-gradient(251deg,#0295FF_0.47%,var(--Primary,#5C58FF)_71.4%)] self-stretch my-auto"
+          className="aspect-square object-contain w-[90px] fill-[linear-gradient(251deg,#0295FF_0.47%,var(--Primary,#5C58FF)_71.4%)] self-stretch my-auto"
         />
       </div>
       
