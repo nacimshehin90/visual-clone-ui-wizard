@@ -9,7 +9,7 @@ import {
   TableRow, 
   TableCell 
 } from "@/components/ui/table";
-import { ArrowRight, DollarSign } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface Transaction {
   icon: string;
@@ -85,8 +85,12 @@ const StatusBadge: React.FC<{ status: Transaction['status'] }> = ({ status }) =>
 
 const GeneratedIcon: React.FC = () => {
   return (
-    <div className="w-6 h-6 flex items-center justify-center bg-[#3CB775] rounded-full text-white">
-      <DollarSign className="h-4 w-4" />
+    <div className="w-6 h-6 flex items-center justify-center rounded-full overflow-hidden">
+      <img 
+        src="/lovable-uploads/9abb0c22-a7f0-4db1-a6c7-291d6f0bd45d.png" 
+        alt="MW Logo" 
+        className="w-full h-full object-contain"
+      />
     </div>
   );
 };
