@@ -16,9 +16,9 @@ export const Sidebar: React.FC = () => {
     <nav className="w-full h-screen overflow-hidden bg-[#363636] mx-auto px-8 py-14 max-md:px-5 flex flex-col" role="navigation">
       <div className="flex w-full items-center gap-3 justify-center">
         <img
-          src="https://cdn.builder.io/api/v1/image/assets/5fef96f6a1464afbb033bd371ba8593b/48b29a0565722570d0be901d67f4c64f01ff01f3?placeholderIfAbsent=true"
-          alt="Logo"
-          className="aspect-[1.81] object-contain w-[58px] fill-[linear-gradient(251deg,#0295FF_0.47%,var(--Primary,#5C58FF)_71.4%)] self-stretch my-auto"
+          src="/lovable-uploads/9abb0c22-a7f0-4db1-a6c7-291d6f0bd45d.png"
+          alt="MW Logo"
+          className="aspect-square object-contain w-[58px] fill-[linear-gradient(251deg,#0295FF_0.47%,var(--Primary,#5C58FF)_71.4%)] self-stretch my-auto"
         />
       </div>
       
