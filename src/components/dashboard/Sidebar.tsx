@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const navItems = [
@@ -12,7 +13,7 @@ const navItems = [
 
 export const Sidebar: React.FC = () => {
   return (
-    <nav className="w-full overflow-hidden bg-[#363636] mx-auto px-8 py-14 max-md:px-5" role="navigation">
+    <nav className="w-full h-screen overflow-hidden bg-[#363636] mx-auto px-8 py-14 max-md:px-5 flex flex-col" role="navigation">
       <div className="flex w-full items-center gap-3 justify-center">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/5fef96f6a1464afbb033bd371ba8593b/48b29a0565722570d0be901d67f4c64f01ff01f3?placeholderIfAbsent=true"
@@ -35,7 +36,7 @@ export const Sidebar: React.FC = () => {
         ))}
       </div>
 
-      <div className="w-full max-w-[239px] text-base text-neutral-50 font-normal whitespace-nowrap flex-1 mt-16 max-md:mt-10">
+      <div className="w-full text-base text-neutral-50 font-normal whitespace-nowrap mt-auto mb-10">
         <div className="flex min-h-12 w-full gap-3 bg-[#363636] px-4 py-3">
           <img src="https://cdn.builder.io/api/v1/image/assets/5fef96f6a1464afbb033bd371ba8593b/d8dd5341f37f343bb3752c79341dd5b06fb214a1?placeholderIfAbsent=true" alt="" className="aspect-[1] object-contain w-5 shrink-0" />
           <div className="text-neutral-50">Settings</div>
