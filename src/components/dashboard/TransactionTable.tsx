@@ -9,7 +9,7 @@ import {
   TableRow, 
   TableCell 
 } from "@/components/ui/table";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, DollarSign } from "lucide-react";
 
 interface Transaction {
   icon: string;
@@ -21,6 +21,7 @@ interface Transaction {
   amount: string;
   isPositive?: boolean;
   additionalInfo?: string;
+  useGeneratedIcon?: boolean;
 }
 
 const transactions: Transaction[] = [
@@ -39,7 +40,8 @@ const transactions: Transaction[] = [
     type: 'Incoming',
     status: 'completed',
     amount: '+USD 8,000.00',
-    isPositive: true
+    isPositive: true,
+    useGeneratedIcon: true
   },
   {
     icon: 'https://cdn.builder.io/api/v1/image/assets/5fef96f6a1464afbb033bd371ba8593b/0fb8f50fa102c3f310dcfa7ff3f64cec1625d4cb?placeholderIfAbsent=true',
@@ -81,6 +83,14 @@ const StatusBadge: React.FC<{ status: Transaction['status'] }> = ({ status }) =>
   );
 };
 
+const GeneratedIcon: React.FC = () => {
+  return (
+    <div className="w-6 h-6 flex items-center justify-center bg-[#3CB775] rounded-full text-white">
+      <DollarSign className="h-4 w-4" />
+    </div>
+  );
+};
+
 export const TransactionTable: React.FC = () => {
   return (
     <section className="border border-[color:var(--Neutral-400,#EBEBEB)] w-full overflow-hidden mt-7 p-6 rounded-lg border-solid max-md:max-w-full">
@@ -105,11 +115,15 @@ export const TransactionTable: React.FC = () => {
                 <TableCell className="w-[118px] p-0">
                   <div className="flex w-full items-center justify-start p-4">
                     <div className="items-center border border-[color:var(--Neutral-400,#EBEBEB)] flex w-12 h-12 bg-neutral-50 p-3 rounded-full border-solid">
-                      <img 
-                        src={transaction.icon} 
-                        alt="" 
-                        className="w-6 h-6 object-contain max-w-full max-h-full" 
-                      />
+                      {transaction.useGeneratedIcon ? (
+                        <GeneratedIcon />
+                      ) : (
+                        <img 
+                          src={transaction.icon} 
+                          alt="" 
+                          className="w-6 h-6 object-contain max-w-full max-h-full" 
+                        />
+                      )}
                     </div>
                   </div>
                 </TableCell>
