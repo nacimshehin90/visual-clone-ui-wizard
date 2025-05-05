@@ -105,7 +105,11 @@ export const TransactionTable: React.FC = () => {
                 <TableCell className="w-[118px] p-0">
                   <div className="flex w-full items-center justify-start p-4">
                     <div className="items-center border border-[color:var(--Neutral-400,#EBEBEB)] flex w-12 h-12 bg-neutral-50 p-3 rounded-full border-solid">
-                      <img src={transaction.icon} alt="" className="w-6 h-6 object-contain" />
+                      <img 
+                        src={transaction.icon} 
+                        alt="" 
+                        className="w-6 h-6 object-contain max-w-full max-h-full" 
+                      />
                     </div>
                   </div>
                 </TableCell>
