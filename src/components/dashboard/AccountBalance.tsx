@@ -1,8 +1,9 @@
+
 import React from 'react';
 
 export const AccountBalance: React.FC = () => {
   return (
-    <section className="bg-[rgba(154,235,191,0.43)] border flex flex-col items-stretch justify-center p-[30px] rounded-[13px] border-[rgba(81,209,137,1)] border-solid max-md:px-5">
+    <section className="bg-[rgba(154,235,191,0.43)] border inline-block items-stretch justify-center p-[30px] rounded-[13px] border-[rgba(81,209,137,1)] border-solid max-md:px-5">
       <div className="flex flex-col">
         <div className="self-stretch gap-1 text-base text-black font-medium">
           Total account balance
