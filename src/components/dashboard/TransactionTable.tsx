@@ -83,7 +83,7 @@ const StatusBadge: React.FC<{ status: Transaction['status'] }> = ({ status }) =>
 
 export const TransactionTable: React.FC = () => {
   return (
-    <section className="border border-[color:var(--Neutral-400,#EBEBEB)] w-full overflow-hidden mt-7 p-6 rounded-lg border-solid max-md:max-w-full max-md:px-5">
+    <section className="border border-[color:var(--Neutral-400,#EBEBEB)] w-full overflow-hidden mt-7 p-6 rounded-lg border-solid max-md:max-w-full">
       <div className="flex w-full items-center gap-[40px_100px] justify-between flex-wrap max-md:max-w-full">
         <h2 className="text-black text-2xl font-semibold leading-none self-stretch my-auto">
           Recent transactions
@@ -125,10 +125,10 @@ export const TransactionTable: React.FC = () => {
                         {transaction.name}
                       </div>
                       {transaction.type && (
-                        <div className="text-[#5E5E5E] text-sm font-normal leading-none flex items-center gap-1">
+                        <div className="text-[#5E5E5E] text-sm font-normal leading-5 flex items-center gap-1">
                           {transaction.type}
                           {transaction.type.includes('Outgoing') && (
-                            <ArrowRight className="h-3 w-3 text-[#5E5E5E]" />
+                            <ArrowRight className="h-4 w-4 text-[#5E5E5E] inline-block ml-0.5" />
                           )}
                         </div>
                       )}
