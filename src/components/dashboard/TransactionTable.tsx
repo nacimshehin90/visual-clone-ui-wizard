@@ -60,9 +60,9 @@ const transactions: Transaction[] = [
     amount: '-USD 100.00'
   },
   {
-    icon: 'https://cdn.builder.io/api/v1/image/assets/5fef96f6a1464afbb033bd371ba8593b/b8e25fc612de9304f0e87abf551eba6f4a915254?placeholderIfAbsent=true',
-    name: 'Ognjen Samardzic',
-    avatarText: 'OS',
+    icon: 'https://cdn.builder.io/api/v1/image/assets/5fef96f6a1464afbb033bd371ba8593b/d3202a771ceebc30f85b3cef1dcfd307cf75555f?placeholderIfAbsent=true',
+    name: 'Roman Karachinsky',
+    avatarText: 'RK',
     type: 'Outgoing',
     status: 'completed',
     amount: '-USD 250.00'
